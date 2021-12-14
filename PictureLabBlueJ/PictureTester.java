@@ -44,11 +44,27 @@ public class PictureTester
     temple.explore();
   }
   
+  public static void testMirrorArms()
+  {
+    Picture snow = new Picture("snowman.jpg");
+    snow.explore();
+    snow.mirrorArms();
+    snow.explore();
+  }
+  
+  public static void testMirrorGull()
+  {
+    Picture gull = new Picture("seagull.jpg");
+    gull.explore();
+    gull.mirrorGull();
+    gull.explore();
+  }
+  
   /** Method to test the collage method */
-  public static void testCollage()
+  public static void testMyCollage()
   {
     Picture canvas = new Picture("640x480.jpg");
-    canvas.createCollage();
+    canvas.myCollage();
     canvas.explore();
   }
   
@@ -56,12 +72,13 @@ public class PictureTester
   public static void testEdgeDetection()
   {
     Picture swan = new Picture("swan.jpg");
-    swan.edgeDetection(10);
+    swan.explore();
+    swan.edgeDetection2(10);
     swan.explore();
   }
   
   /** Method to test negation */
-  public static void testNegation(){
+  public static void testNegate(){
       Picture beach = new Picture("beach.jpg");
       beach.explore();
       beach.negate();
@@ -83,6 +100,55 @@ public class PictureTester
       under.explore();
   }
   
+  public static void testKeepOnlyRed(){
+      Picture beach = new Picture("beach.jpg");
+      beach.explore();
+      beach.keepOnlyRed();
+      beach.explore();
+  }
+  
+  public static void testKeepOnlyGreen(){
+      Picture beach = new Picture("beach.jpg");
+      beach.explore();
+      beach.keepOnlyGreen();
+      beach.explore();
+  }
+  
+  public static void testMirrorHorizontalTopToBottom(){
+      Picture beach = new Picture("beach.jpg");
+      beach.explore();
+      beach.mirrorHorizontalTopToBottom();
+      beach.explore();
+  }
+  
+  public static void testMirrorHorizontalBotToTop(){
+      Picture beach = new Picture("beach.jpg");
+      beach.explore();
+      beach.mirrorHorizontalBotToTop();
+      beach.explore();
+  }
+  
+  public static void testMirrorDiagonal(){
+      Picture beach = new Picture("beach.jpg");
+      beach.explore();
+      beach.mirrorDiagonal();
+      beach.explore();
+  }
+  
+  public static void testCopyRegion(){
+      Picture beach = new Picture("beach.jpg");
+      beach.explore();
+      beach.copyRegion(304, 158, 410, 239, 513, 259);
+      beach.explore();
+  }
+  
+  public static void testMirrorRegion(){
+      Picture beach = new Picture("beach.jpg");
+      beach.explore();
+      beach.mirrorRegion(304, 158, 410, 239, 513, 259);
+      beach.explore();
+  }
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -90,21 +156,25 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-    //testZeroBlue();
-    //testKeepOnlyBlue();
-    //testKeepOnlyRed();
-    //testKeepOnlyGreen();
-    //testNegate();
-    //testGrayscale();
-    //testFixUnderwater();
-    //testMirrorVertical();
-    //testMirrorTemple();
-    //testMirrorArms();
-    //testMirrorGull();
-    //testMirrorDiagonal();
-    //testCollage();
-    //testCopy();
-    //testEdgeDetection();
+    // testZeroBlue();
+    // testKeepOnlyBlue();
+    // testKeepOnlyRed();
+    // testKeepOnlyGreen();
+    // testNegate();
+    // testGrayscale();
+    // testFixUnderwater();
+    // testMirrorVertical();
+    // testMirrorHorizontalTopToBottom();
+    // testMirrorHorizontalBotToTop();
+    // testMirrorTemple();
+    // testMirrorRegion();
+    // testCopyRegion();
+    // testMirrorArms();
+    // testMirrorGull();
+    // testMirrorDiagonal();
+    testMyCollage();
+    // testCopyRegion();
+    testEdgeDetection();
     //testEdgeDetection2();
     //testChromakey();
     //testEncodeAndDecode();
