@@ -1,10 +1,10 @@
 import java.awt.*;
-import java.awt.font.*;
-import java.awt.geom.*;
+// import java.awt.font.*;
+// import java.awt.geom.*;
 import java.awt.image.BufferedImage;
-import java.text.*;
-import java.util.*;
-import java.util.List; // resolves problem with java.awt.List and java.util.List
+// import java.text.*;
+// import java.util.*;
+// import java.util.List; // resolves problem with java.awt.List and java.util.List
 
 /**
  * A class that represents a picture.  This class inherits from 
@@ -71,16 +71,16 @@ public class Picture extends SimplePicture
   
   ////////////////////// methods ///////////////////////////////////////
   
-  private void colorIncreasedBy(Color color, float percent){
-      float[] newColors = new float[3];
-      for (float fColor: color.getComponents(new float[3])){
-          if (fColor*percent > 255){
-              fColor = 255;
-          } else {
-              fColor = fColor*percent;
-          }
-      }
-  }
+  // private void colorIncreasedBy(Color color, float percent){
+  //     float[] newColors = new float[3];
+  //     for (float fColor: color.getComponents(new float[3])){
+  //         if (fColor*percent > 255){
+  //             fColor = 255;
+  //         } else {
+  //             fColor = fColor*percent;
+  //         }
+  //     }
+  // }
   
   /**
    * Method to return a string with information about this picture.
@@ -123,33 +123,33 @@ public class Picture extends SimplePicture
     return big;
   }
   
-  private int getMaxGreen(){
-    Pixel[][] pixels = this.getPixels2D();
-    int big = 0;
-    for (Pixel[] rowArray : pixels)
-    {
-      for (Pixel pixelObj : rowArray)
-      {
-          if (pixelObj.getGreen() > big)
-          big = pixelObj.getGreen();
-      }
-    }
-    return big;
-  }
+  // private int getMaxGreen(){
+  //   Pixel[][] pixels = this.getPixels2D();
+  //   int big = 0;
+  //   for (Pixel[] rowArray : pixels)
+  //   {
+  //     for (Pixel pixelObj : rowArray)
+  //     {
+  //         if (pixelObj.getGreen() > big)
+  //         big = pixelObj.getGreen();
+  //     }
+  //   }
+  //   return big;
+  // }
   
-  private int getMaxBlue(){
-    Pixel[][] pixels = this.getPixels2D();
-    int big = 0;
-    for (Pixel[] rowArray : pixels)
-    {
-      for (Pixel pixelObj : rowArray)
-      {
-          if (pixelObj.getBlue() > big)
-          big = pixelObj.getBlue();
-      }
-    }
-    return big;
-  }
+  // private int getMaxBlue(){
+  //   Pixel[][] pixels = this.getPixels2D();
+  //   int big = 0;
+  //   for (Pixel[] rowArray : pixels)
+  //   {
+  //     for (Pixel pixelObj : rowArray)
+  //     {
+  //         if (pixelObj.getBlue() > big)
+  //         big = pixelObj.getBlue();
+  //     }
+  //   }
+  //   return big;
+  // }
   
   private int getMinRed(){
     Pixel[][] pixels = this.getPixels2D();
@@ -165,33 +165,33 @@ public class Picture extends SimplePicture
     return smol;
   }
   
-  private int getMinGreen(){
-    Pixel[][] pixels = this.getPixels2D();
-    int smol = 255;
-    for (Pixel[] rowArray : pixels)
-    {
-      for (Pixel pixelObj : rowArray)
-      {
-          if (pixelObj.getGreen() < smol)
-          smol = pixelObj.getGreen();
-      }
-    }
-    return smol;
-  }
+  // private int getMinGreen(){
+  //   Pixel[][] pixels = this.getPixels2D();
+  //   int smol = 255;
+  //   for (Pixel[] rowArray : pixels)
+  //   {
+  //     for (Pixel pixelObj : rowArray)
+  //     {
+  //         if (pixelObj.getGreen() < smol)
+  //         smol = pixelObj.getGreen();
+  //     }
+  //   }
+  //   return smol;
+  // }
   
-  private int getMinBlue(){
-    Pixel[][] pixels = this.getPixels2D();
-    int smol = 255;
-    for (Pixel[] rowArray : pixels)
-    {
-      for (Pixel pixelObj : rowArray)
-      {
-          if (pixelObj.getBlue() < smol)
-          smol = pixelObj.getBlue();
-      }
-    }
-    return smol;
-  }
+  // private int getMinBlue(){
+  //   Pixel[][] pixels = this.getPixels2D();
+  //   int smol = 255;
+  //   for (Pixel[] rowArray : pixels)
+  //   {
+  //     for (Pixel pixelObj : rowArray)
+  //     {
+  //         if (pixelObj.getBlue() < smol)
+  //         smol = pixelObj.getBlue();
+  //     }
+  //   }
+  //   return smol;
+  // }
   
   private int maximiseRed(int value, int minRed, int maxRed){
       value -= minRed;
@@ -212,12 +212,6 @@ public class Picture extends SimplePicture
     
     int maxRed = getMaxRed();
     int minRed = getMinRed();
-    
-    int minGreen = getMinGreen();
-    int maxGreen = getMaxGreen();
-    
-    int minBlue = getMinBlue();
-    int maxBlue = getMaxBlue();
     
     for (Pixel[] rowArray : pixels)
     {
@@ -357,7 +351,6 @@ public class Picture extends SimplePicture
     int mirrorPoint = 276;
     Pixel leftPixel = null;
     Pixel rightPixel = null;
-    int count = 0;
     Pixel[][] pixels = this.getPixels2D();
     
     // loop through the rows
@@ -435,9 +428,6 @@ public class Picture extends SimplePicture
       
       int w = x2 - x1;
       
-      Pixel p1 = null;
-      Pixel p2 = null;
-      
       for (int y = 0; y < height; y++){
           for (int x = 0; x < width; x++){
               // if our pixel is the the designated region
@@ -465,7 +455,6 @@ public class Picture extends SimplePicture
     int mirrorPoint = 206;
     Pixel leftPixel = null;
     Pixel rightPixel = null;
-    int count = 0;
     Pixel[][] pixels = this.getPixels2D();
     
     // loop through the rows
@@ -596,7 +585,6 @@ public class Picture extends SimplePicture
   {
     Pixel leftPixel = null;
     Pixel rightPixel = null;
-    Pixel topPixel = null;
     Pixel botPixel = null;
     Pixel[][] pixels = this.getPixels2D();
     Color rightColor = null;
