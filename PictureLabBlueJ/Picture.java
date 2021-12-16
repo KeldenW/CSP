@@ -349,6 +349,7 @@ public class Picture extends SimplePicture
   public void mirrorTemple()
   {
     int mirrorPoint = 276;
+    int count = 0;
     Pixel leftPixel = null;
     Pixel rightPixel = null;
     Pixel[][] pixels = this.getPixels2D();
@@ -359,13 +360,14 @@ public class Picture extends SimplePicture
       // loop from 13 to just before the mirror point
       for (int col = 13; col < mirrorPoint; col++)
       {
-        
+        count++;
         leftPixel = pixels[row][col];      
         rightPixel = pixels[row]                       
                          [mirrorPoint - col + mirrorPoint];
         rightPixel.setColor(leftPixel.getColor());
       }
     }
+    System.out.println("The nested loop ran: " + count + " times.");
   }
   
   public void mirrorDiagonal(){
@@ -568,6 +570,8 @@ public class Picture extends SimplePicture
     wall.negate();
     head.zeroBlue();
 
+    lion.fixUnderwater();
+
     this.copy(wall, 81, 76, 412, 377, 0, 0);
     this.mirrorRegion(0, 0, 412-81, 377-76, 200, 0);
     this.copy(lion, 232, 318, 377, 470, 100, 100);
@@ -614,14 +618,39 @@ public class Picture extends SimplePicture
       }
     }
   }
-  
+
+  public Pixel[] get8surrounding(Pixel[][] from, int row, int col){
+    /*
+    1 2 3
+    8 X 4
+    7 6 5
+    */
+    Pixel[] e = new Pixel[8];
+    e[0] = from[row-1][col-1];
+    e[1] = from[row-1][col];
+    e[2] = from[row-1][col+1];
+    e[3] = from[row][col-1];
+    e[4] = from[row][col+1];
+    e[5] = from[row+1][col-1];
+    e[6] = from[row+1][col];
+    e[7] = from[row+1][col+1];
+    return e;
+  }
+
+  private void updatePix(Pixel[][] to, Pixel[][] from, int row, int col, int dist) {
+    Pixel center = to[row][col];
+    Pixel[] eight = get8surrounding(from, row, col);
+    for (Pixel pix: eight) {
+      if (pix.colorDistance(center.getColor()) > dist){
+        center.setColor(Color.WHITE);
+        return;
+      } else {
+        center.setColor(Color.BLACK);
+      }
+    }
+  }
+
   public void edgeDetection2(int dist){
-    // all the directions
-    Pixel left = null;
-    Pixel right = null;
-    Pixel up = null;
-    Pixel down = null;
-    Pixel center = null;
     
     // get the parent arrays
     Pixel[][] to = this.getPixels2D();
@@ -642,19 +671,7 @@ public class Picture extends SimplePicture
     {
       for (int col = 1; col < to[0].length-1; col++)
       {
-        left = from[row][col-1];
-        right = from[row][col+1];
-        up = from[row-1][col];
-        down = from[row+1][col];
-        center = to[row][col];
-        
-        if (center.colorDistance(left.getColor()) > dist ||
-            center.colorDistance(right.getColor()) > dist ||
-            center.colorDistance(up.getColor()) > dist ||
-            center.colorDistance(down.getColor()) > dist)
-            center.setColor(Color.BLACK);
-        else
-            center.setColor(Color.WHITE);
+        updatePix(to, from, row, col, dist);
       }
     }
   }
@@ -665,10 +682,6 @@ public class Picture extends SimplePicture
    */
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("beach.jpg");
-    beach.explore();
-    beach.zeroBlue();
-    beach.explore();
   }
   
 } // this } is the end of class Picture, put all new methods before this

@@ -73,7 +73,7 @@ public class PictureTester
   {
     Picture swan = new Picture("swan.jpg");
     swan.explore();
-    swan.edgeDetection2(10);
+    swan.edgeDetection2(200);
     swan.explore();
   }
   
@@ -172,15 +172,15 @@ public class PictureTester
     // testMirrorArms();
     // testMirrorGull();
     // testMirrorDiagonal();
-    testMyCollage();
+    // testMyCollage();
     // testCopyRegion();
     testEdgeDetection();
-    //testEdgeDetection2();
-    //testChromakey();
-    //testEncodeAndDecode();
-    //testGetCountRedOverValue(250);
-    //testSetRedToHalfValueInTopHalf();
-    //testClearBlueOverValue(200);
-    //testGetAverageForColumn(0);
+    // testEdgeDetection2();
+    // testChromakey();
+    // testEncodeAndDecode();
+    // testGetCountRedOverValue(250);
+    // testSetRedToHalfValueInTopHalf();
+    // testClearBlueOverValue(200);
+    // testGetAverageForColumn(0);
   }
 }

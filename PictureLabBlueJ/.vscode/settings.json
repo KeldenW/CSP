@@ -1,9 +1,3 @@
 {
-  "files.exclude": {
-    "**.ctxt": true,
-    "Picture.ctxt": true,
-    "**.class": true,
-    "**.gif": true,
-    "**.jpg": true
-  }
+  "files.exclude": {}
 }
